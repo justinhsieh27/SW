@@ -53,6 +53,18 @@ def load_checkpoint2(config, model, logger):
     logger.info(msg)
     max_accuracy = 0.0
     
+    if not config.EVAL_MODE and 'optimizer' in checkpoint and 'lr_scheduler' in checkpoint and 'epoch' in checkpoint:
+        optimizer.load_state_dict(checkpoint['optimizer'])
+        lr_scheduler.load_state_dict(checkpoint['lr_scheduler'])
+        config.defrost()
+        config.TRAIN.START_EPOCH = checkpoint['epoch'] + 1
+        config.freeze()
+        if 'amp' in checkpoint and config.AMP_OPT_LEVEL != "O0" and checkpoint['config'].AMP_OPT_LEVEL != "O0":
+            amp.load_state_dict(checkpoint['amp'])
+        logger.info(f"=> loaded successfully '{config.MODEL.RESUME}' (epoch {checkpoint['epoch']})")
+        if 'max_accuracy' in checkpoint:
+            max_accuracy = checkpoint['max_accuracy']
+            
     del checkpoint
     torch.cuda.empty_cache()
     return max_accuracy
