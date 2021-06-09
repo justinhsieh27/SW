@@ -36,7 +36,6 @@ import PIL
 from PIL import Image
 import matplotlib.pyplot as plt
 from torchvision import datasets, transforms
-from IPython.display import display
 
 from os import listdir
 import shutil
