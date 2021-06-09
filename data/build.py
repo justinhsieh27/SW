@@ -10,13 +10,18 @@ import torch
 import numpy as np
 import torch.distributed as dist
 from torchvision import datasets, transforms
-from timm.data.constants import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
+#20210609, Justin
+#from timm.data.constants import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
 from timm.data import Mixup
 from timm.data import create_transform
 from timm.data.transforms import _pil_interp
 
 from .cached_image_folder import CachedImageFolder
 from .samplers import SubsetRandomSampler
+
+#20210609, Justin
+IMAGENET_DEFAULT_MEAN = (0.939, 0.941, 0.947)
+IMAGENET_DEFAULT_STD = (0.183, 0.18, 0.162)
 
 
 def build_loader(config):
