@@ -340,8 +340,10 @@ def validate2(config, data_loader, model, dataset_val, dataset_train):
 
 
     #20210603, Justin
-    IMAGENET_DEFAULT_MEAN = (0.939, 0.941, 0.947)
-    IMAGENET_DEFAULT_STD = (0.183, 0.18, 0.162)
+    IMAGENET_DEFAULT_MEAN = (0.485, 0.456, 0.406)
+    IMAGENET_DEFAULT_STD = (0.229, 0.224, 0.225)
+    #IMAGENET_DEFAULT_MEAN = (0.939, 0.941, 0.947)
+    #IMAGENET_DEFAULT_STD = (0.183, 0.18, 0.162)
 
     # loader使用torchvision中自带的transforms函数
     loader = transforms.Compose([transforms.Resize((224, 224), interpolation=PIL.Image.BICUBIC), transforms.ToTensor(), transforms.Normalize(IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD)])  
