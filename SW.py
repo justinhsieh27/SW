@@ -3,6 +3,8 @@
 # Written by Justin Hsieh
 # --------------------------------------------------------
 
+import sys
+sys.path.append('SW')
 import os
 import time
 import argparse
