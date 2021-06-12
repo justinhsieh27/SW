@@ -1,8 +1,11 @@
 # --------------------------------------------------------
 # Traditioanl Chinese word classification based on Swin-transformer
+# The same with SW.py, just change path
 # Written by Justin Hsieh
 # --------------------------------------------------------
 
+import sys
+sys.path.append('SW')
 import os
 import time
 import argparse
@@ -59,8 +62,8 @@ class SWClassifier:
         args.amp_opt_level='O1'
         args.batch_size=None
         args.cache_mode='part'
-        args.cfg='configs/swin_tiny_patch4_window7_224.yaml'
-        args.data_path='zhTW_preprocess3'
+        args.cfg='SW/configs/swin_tiny_patch4_window7_224.yaml'
+        args.data_path='SW/zhTW_preprocess3'
         args.eval=True
         args.local_rank=0
         args.opts=['TRAIN.AUTO_RESUME', 'False']
