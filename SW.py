@@ -60,8 +60,8 @@ class SWClassifier:
         args.amp_opt_level='O1'
         args.batch_size=None
         args.cache_mode='part'
-        args.cfg='configs/swin_nano_patch4_window7_224.yaml'
-        args.data_path='zhTW_preprocess'
+        args.cfg='configs/swin_tiny_patch4_window7_224.yaml'
+        args.data_path='zhTW_preprocess3'
         args.eval=True
         args.local_rank=0
         args.opts=['TRAIN.AUTO_RESUME', 'False']
@@ -311,6 +311,11 @@ class SWClassifier:
             print(self.dicClass[i] + ": " + str(lstResulByCls[i]))
             lstResult.append([self.dicClass[i], lstResulByCls[i]])
     
+        #return lstResult
 
-        return lstResult
+        if lstResult[0][1] < 4.5:
+            return "isnull"
+        else:
+            return lstResult[0][0]
+
 
