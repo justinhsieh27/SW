@@ -34,7 +34,7 @@ import cv2
 
 import PIL
 from PIL import Image
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from torchvision import datasets, transforms
 
 try:
